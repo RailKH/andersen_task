@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <title>Chat Application</title>
+</head>
+
+<body>
+  <div class="registration-container">
+    <div class="registration-container_title">Вход</div>
+    <div class="registration-container_form">
+      <p>Логин</p>
+      <input type="text" name="" class="login">
+      <p>Пароль</p>
+      <input type="password" name="" class="password">
+      <div class="error-message">
+        Login or Password is Incorrect
+      </div>
+    </div>
+    <div class="registration-container__submit">
+      <button type="submit" class="submit">Войти</button>
+    </div>
+  </div>
+  <div class="application-container">
+    <div class="application-container_wrapper">
+    <div class="application-container_chats">
+      <div class="application-container_chats-header">
+        <div class="recent">Recent</div>
+        <input type="text" class="search login" placeholder="Search">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="space-for-chats"></div>
+    </div>
+    <div class="application-container_opened-messages"> 
+      <div class="application-container_messages">  
+      </div>
+      <div class="application-container_type">
+        <input type="text" placeholder="Type Message" class="type-message login">
+      </div>
+    </div>
+  </div>
+
+<script src="https://kit.fontawesome.com/cbf673a7d4.js" crossorigin="anonymous"></script>
+<script src="javascript/script.js" type="module"></script>
+
+</body>
+
+</html>
