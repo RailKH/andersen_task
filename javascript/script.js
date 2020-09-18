@@ -26,12 +26,7 @@ chats.addEventListener("click", (e) => {
     });
   }
 });
-function deleteActiveBlock() {
-  const activeBlock = document.querySelectorAll(".chat-container");
-  activeBlock.forEach((item) => {
-    item.classList.remove("active");
-  });
-}
+
 submitButton.addEventListener("click", () => {
   if (loginInput.value.length > 3 && passwordInput.value.length > 3) {
     validateForm();
@@ -39,6 +34,13 @@ submitButton.addEventListener("click", () => {
     watchError();
   }
 });
+
+function deleteActiveBlock() {
+  const activeBlock = document.querySelectorAll(".chat-container");
+  activeBlock.forEach((item) => {
+    item.classList.remove("active");
+  });
+}
 
 function validateForm() {
   const person = new Auth(loginInput.value, passwordInput.value);
@@ -55,10 +57,34 @@ function validateForm() {
     })
     .finally(() => (submitButton.innerHTML = `Войти`));
 }
+
 function watchError() {
   errorMessage.style.display = "block";
   loginInput.style.border = "2px solid red";
   passwordInput.style.border = "2px solid red";
+}
+
+function convertDate(date, showTime = false) {
+  let originalDate = new Date(Date.parse(date));
+  let year = originalDate.getFullYear();
+  let day = originalDate.getDate();
+  let monthA = "Jan,Feb,Mar,Apr, May, June, July, Aug, Sept, Oct, Nov, Dec".split(
+    ","
+  );
+  let month = monthA[originalDate.getMonth() - 1];
+  let hour = originalDate.getHours();
+  let minutes = originalDate.getMinutes();
+  let convertedDate = `${month} ${day} ${year}`;
+
+  if (showTime) {
+    return `${hour}:${minutes} ${convertedDate}`;
+  }
+  return convertedDate;
+}
+
+function init() {
+  const chat = new ChatRender();
+  chat.generateChat();
 }
 
 // Class Auth
@@ -123,7 +149,6 @@ class MessageRender {
 }
 
 // class render chat
-
 class ChatRender {
   generateChat() {
     const data = new GetData(CHATS_URL);
@@ -183,27 +208,4 @@ class ChatRender {
   }
 }
 
-function convertDate(date, showTime = false) {
-  let originalDate = new Date(Date.parse(date));
-  let year = originalDate.getFullYear();
-  let day = originalDate.getDate();
-  let monthA = "Jan,Feb,Mar,Apr, May, June, July, Aug, Sept, Oct, Nov, Dec".split(
-    ","
-  );
-  let month = monthA[originalDate.getMonth() - 1];
-  let hour = originalDate.getHours();
-  let minutes = originalDate.getMinutes();
-  let convertedDate = `${month} ${day} ${year}`;
 
-  if (showTime) {
-    return `${hour}:${minutes} ${convertedDate}`;
-  }
-  return convertedDate;
-}
-
-function init() {
-  const chat = new ChatRender();
-  chat.generateChat();
-}
-
-init();
