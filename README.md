@@ -19,5 +19,4 @@ The application is able to:
 Repo owners or admins: 
 
 * Маньковская Юлия
-+ Харисов Раиль
-+ Момот Дмитрий
+* Харисов Раиль
